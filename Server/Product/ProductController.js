@@ -1,68 +1,78 @@
-var car = require("./Car");
-
-async function getAll(req, res) {
-  const cars = await car.find({}).populate({ path: "_id", select: "name" });
-  res.send(cars);
+var product = require("./ProductSchema");
+// Get all products
+const getAll = async (req, res)=> {
+try{
+  const products = await product.find({}).populate({ path: "_id", select: "name" });
+  res.status(200).send(products);
+}catch(err){
+  res.status(500).send(err)
+}
 }
 
-function createOne(req, res) {
-  console.log(req.user);
-  car
-    .insertMany({
-      name: req.body.name,
+// Post a new product
+const createOne = async (req, res)=> {
+  // console.log(req);
+try{
+  const productPosted= await product.insertMany({
+      productName: req.body.productName,
       description: req.body.description,
-      imageUrl: req.body.imageUrl,
+      category: req.body.category,
       price: req.body.price,
-      nmr : req.body.nmr,
-      userId: req.user["_id"],
+      imageUrl : req.body.imageUrl,
+      color : req.body.color,
+      gendre : req.body.gendre,
+      posted_at : req.body.posted_at,
+      // adminId: req.adminId["_id"],
     })
-    .then((data) => {
-      res.send(data);
-    });
+    res.status(201).send(productPosted);
+    return;
+  }catch(err){
+    res.send(err)
+  }
 }
 
-function updateOne(req, res) {
-  console.log(req.params);
+// Update an existing product
+const updateOne = async (req, res)=>{
+  // console.log(req.params);
 
   // console.log(id);
-  car
-    .findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        price: req.body.price,
-      }
-    )
-    .then(() => {
-      res.send("updated");
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-}
+ 
+     try{
+      const productUpdated= await product.findByIdAndUpdate(
+        { _id: req.params.id },
+       { $set : req.body
+      },{new:true}
+      );
 
-function deleteOne(req, res) {
-  console.log(req.params);
-  let id = req.params.id;
-  console.log(id);
-  car
-    .findByIdAndDelete(id)
-    .then(() => {
-      res.send("deleted");
-    })
-    .catch((err) => {
-      res.send(err);
-    });
+      res.send(productUpdated);
+    }catch(err){
+      console.log(err);
+    };
 }
+// delete a product
 
-function getOne(req, res) {
-  car
-    .findById(req.params.id)
-    .then((response) => {
-      res.send(response);
-    })
-    .catch((err) => {
-      res.send(err);
-    });
+ const deleteOne = async (req, res)=>{
+  const id = req.params.id;
+  // console.log(req.params);
+   try {
+    const deleted= await product.findByIdAndDelete(id)
+     res.status(204).send(deleted);
+     return;
+    }catch(err){
+        res.status(500).send(err);
+    }
+ }
+
+ // get one product 
+ const getOne= async (req, res)=> {
+  try{
+ const giveOne= await product.findById(req.params.id)
+     res.status(200).send(giveOne);
+     return;
+    }
+    catch(err){
+      res.send("this user is not avaible");
+    }
 }
 
 
