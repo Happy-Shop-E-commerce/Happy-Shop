@@ -7,3 +7,4 @@ mongoose.connect(mongoUri, () => {
 var db = mongoose.connect(mongoUri);
 
 module.exports = db;
+
