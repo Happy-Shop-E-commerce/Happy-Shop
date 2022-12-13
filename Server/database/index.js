@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-var mongoUri = "";
+mongoose.set('strictQuery', false);
+var mongoUri = "mongodb+srv://happy:shop@cluster0.tq8hta3.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(mongoUri, () => {
   console.log("Database connected  :)");
@@ -7,3 +8,4 @@ mongoose.connect(mongoUri, () => {
 var db = mongoose.connect(mongoUri);
 
 module.exports = db;
+  
