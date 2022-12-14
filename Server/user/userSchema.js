@@ -6,8 +6,9 @@ var userSchema = mongoose.Schema({
     name:String,
     email:String,
     pwd:String,
-    isAdmin : Boolean
+    isAdmin : Boolean,
    
+  
     
 });
  

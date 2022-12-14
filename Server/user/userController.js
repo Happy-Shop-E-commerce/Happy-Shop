@@ -65,7 +65,7 @@ const register = async (req, res) => {
 
     return res.status(200).json({ message: "user Saved" });
   } catch (error) {
-    res.status(500).send(error);
+    console.log(error);
   }
 };
 module.exports = { register, login };
