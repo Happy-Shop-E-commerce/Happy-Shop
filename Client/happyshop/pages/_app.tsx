@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import '../styles/Login.css'
+import '../styles/Login.css' 
+import "../styles/allProducts.css"
 // import '../styles/bootstrap.min.css'
 // import '../styles/fontawesome.css'
 // import '../styles/templatemo.css'
