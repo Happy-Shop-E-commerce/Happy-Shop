@@ -26,7 +26,7 @@ async function login(req, res) {
       return res.status(400).json({ message: "Bad cred" });
     }
 
-    const token = jwt.sign({ id: user["_id"]}, "SECRET");
+    const token = jwt.sign({ id: user["_id"],isAdmin: user["isAdmin"]}, "SECRET");
 
     return res
       .status(200)
