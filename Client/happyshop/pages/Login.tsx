@@ -11,22 +11,69 @@ export default function Login() {
   const router = useRouter();
 
 
-  async function handleSubmit() {
+//   async function handleSubmit() {
+//     try {
+//     //   event.preventDefault();
+//       const admin = await axios.post("http://localhost:4000/users/login", {
+//         email: email,
+//         password : password
+//       })
+//       if (admin) {
+//         // console.log(admin.data.id);
+//         localStorage.setItem("token", admin.data.token);
+//         localStorage.setItem("id", admin.data.id);
+//         console.log(admin)
+// console.log("id", admin.data.id );
+// console.log("token", admin.data.token);
+//         router.push("/Home")
+//         console.log("test");
+        
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+
+ async function handleSubmit() {
     try {
-    //   event.preventDefault();
-      const admin = await axios.post("http://localhost:4000/admin/login", {
-        email: email,
-        password : password
-      })
-      if (admin) {
-        // console.log(admin.data.id);
-        localStorage.setItem("token", admin.data.token);
-        localStorage.setItem("id", admin.data.id);
-      }
+      //   event.preventDefault();
+      const loginRequest = await axios
+        .post("http://localhost:4000/users/login", {
+          email: email,
+          password: password,
+        })
+        .then((response:any) => {
+          const encoded_Payload_Part_InToken = response.data.token.toString().split(".")[1]
+          const decoded_Payload_Part_InToken = atob(encoded_Payload_Part_InToken);
+          // const payload = JSON.parse(decoded_Payload_Part_InToken);
+
+
+          // console.log( "pyload",payload);
+        console.log( "decoded ",decoded_Payload_Part_InToken);
+        console.log( "encoded ",encoded_Payload_Part_InToken);
+
+          // localStorage.setItem("USER_ROLE", payload.userRole);
+          // localStorage.setItem("USER_ID", payload.id);
+          // localStorage.setItem("USER_NAME", payload.name);
+        })
+        .catch((error:any) => {
+          console.error(error);
+        });
     } catch (error) {
       console.log(error);
     }
   }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,7 +106,7 @@ let func =()=> {
                 </form>
 
                <button 
-             onClick={()=>{func()}}
+             onClick={()=>{handleSubmit()}}
                className="button login__submit">
 					<span 
                     className="button__text">Log In </span>

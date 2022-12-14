@@ -11,7 +11,7 @@ var authMiddelware = async function (req, res, next) {
   if (!auth) {
     return res.status(400).json({
       message: "unauthorized",
-    })    ;
+    });
   }
 
   const decodedToken = await jwt.decode(auth);
