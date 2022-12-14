@@ -7,7 +7,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; 
+import Link from 'next/link';
 
 
 
@@ -31,7 +32,7 @@ export default function AllProducts() {
   return (
     <div>
      {data.map((e :any) =>{ return (
-   
+      <Link href={'/details/id'} as = {`/details/${e._id}`} >
          <Card className="card" sx={{ maxWidth: 300 }} sm= {6}>
       <CardMedia
         className="img-card"
@@ -68,7 +69,8 @@ export default function AllProducts() {
           Buy Now
         </Button>
       </CardActions>
-    </Card>
+    </Card> 
+    </Link>
     
         
         
