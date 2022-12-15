@@ -1,15 +1,12 @@
-var mongoose = require('mongoose');
-const db = require('../database/index.js');
+let mongoose = require("mongoose");
+const db = require("../database/index.js");
 mongoose.Promise = global.Promise;
 
-var userSchema = mongoose.Schema({
-    name:String,
-    email:String,
-    pwd:String,
-    isAdmin : Boolean
-   
-    
+let userSchema = mongoose.Schema({
+  name: { type: String },
+  email: { type: String },
+  pwd: { type: String },
+  isAdmin: { type: Boolean, default: false },
 });
- 
 
-module.exports = mongoose.model("user",userSchema);
+module.exports = mongoose.model("user", userSchema);
