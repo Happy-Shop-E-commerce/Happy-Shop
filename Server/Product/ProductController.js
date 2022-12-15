@@ -22,8 +22,8 @@ const createOne = async (req, res) => {
       price: req.body.price,
       imageUrl: req.body.imageUrl,
       color: req.body.color,
-      gendre: req.body.gendre,
-      posted_at: req.body.posted_at,
+     
+     
       // adminId: req.adminId["_id"],
     });
     res.status(201).send(productPosted);

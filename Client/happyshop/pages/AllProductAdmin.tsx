@@ -1,12 +1,11 @@
 //@ts-nocheck
-
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
+import NavbarAdmin from "./NavbarAdmin";
+import Axios from "axios";
 import Link from "next/link";
-import ProductDetails from "./[id]";
 // import Aside from "./aside";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -33,50 +32,33 @@ export default function AllProducts({ data  }) {
   //         setData(res.data);
   //       })
   //       .catch((err) => console.log(err));
-  //   }, []);
+  //   }, []); 
+  var del =  (id : string)=>{
+     Axios.delete(`http://localhost:4000/product/${id}`)
+    .then((res)=>{
+      console.log("deleted") 
+      window.location.reload(false);
+    })
+    .catch(err=>{
+      console.log(err)
+    })  
+    
+    
+   } 
 
-  console.log(cartProducts);
-
-  let AddToCart = (
-    iduser: any,
-    id_product: any,
-    product_name: any,
-    product_description: any,
-    category: any,
-    price: any,
-    image: any
-  ) => {
-    axios
-      .post(`http://localhost:4000/favorite/${iduser}`, {
-        productId: id_product,
-        productName: product_name,
-        description: product_description,
-        category: category,
-        price: price,
-        imageUrl: image,
-      })
-      .then(() => {
-        console.log("added to card");
-        window.location.reload(false);
-      });
-  };
-
-  const [id, setId] = useState("");
-  useEffect(() => {
-    let GetId = localStorage.getItem("USER_ID");
-    setId(GetId);
-  }, []);
-
-  console.log("testtt", id);
+  console.log(data);
 
   return (
     <div>
-      <Navbar />
-      {/* <Aside /> */}
+      <NavbarAdmin /> 
+      <Link href="AddProduct"  > <button>add product </button></Link>
+      {/* <Aside /> */} 
+   
       <div className="grid-container">
         {data.map((element: any) => {
           return (
-            <div className="row">
+            <div className="row"> 
+            
               <div className="col-md-3 col-sm-6">
                 <div className="product-grid">
                   <div className="product-image">
@@ -85,11 +67,23 @@ export default function AllProducts({ data  }) {
                     </a>
                     <span className="product-discount-label">-33%</span>
                     <ul className="product-links">
+                      <li>
+                        <a href="#" data-tip="delete" onClick={()=>{del(element["_id"])}} >
+                          <i className="fas fa-heart" />del
+                        </a>
+                      </li>
                       {/* <li>
                         <a href="#" data-tip="Compare">
                           <i className="fa fa-random" />
                         </a>
                       </li> */}
+                     <Link href={'/edit/id'} as = {`edit/${element._id}`}>
+                      <li>
+                        <a href="#" data-tip="edit">
+                          <i className="fa fa-search" />edit
+                        </a>
+                      </li>
+                      </Link> 
                     </ul>
                   </div>
                   <div className="product-content">
@@ -104,23 +98,15 @@ export default function AllProducts({ data  }) {
                       <Link href={`${element._id}`}>{element.productName}</Link>
                     </h3>
                     <div className="price">{element.price} DT</div>
-                    <a
+                    {/* <a
                       onClick={() => {
-                        AddToCart(
-                          id,
-                          element._id,
-                          element.productName,
-                          element.description,
-                          element.category,
-                          element.price,
-                          element.imageUrl
-                        );
+                        setCartProducts(element);
                         router.push("/Card");
                       }}
                       className="add-to-cart"
                     >
                       add to cart
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>

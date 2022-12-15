@@ -13,8 +13,8 @@ const {
 router.get("/", getAll);
 router.get("/:id", getOne);
 
-router.delete("/:id", [auth, admin], deleteOne);
-router.put("/:id", [auth, admin], updateOne);
-router.post("/", [auth, admin], createOne);
+router.delete("/:id", deleteOne);
+router.put("/:id", updateOne);
+router.post("/", createOne);
 
 module.exports = router;
