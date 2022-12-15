@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import axios from "axios";
 import Link from "next/link";
 import ProductDetails from "./[id]";
 // import Aside from "./aside";
@@ -91,13 +90,6 @@ export default function AllProducts({ data }) {
                           <i className="fa fa-random" />
                         </a>
                       </li> */}
-                      <li>
-                        <Link href={`${element._id}`}>
-                          <span data-tip="Show details">
-                            <i className="fa fa-search" />
-                          </span>
-                        </Link>
-                      </li>
                     </ul>
                   </div>
                   <div className="product-content">
