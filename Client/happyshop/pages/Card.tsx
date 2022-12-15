@@ -1,41 +1,118 @@
-import React from "react";
+//@ts-nocheck
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { HiPlusSm, HiMinusSm } from "react-icons/hi";
 import { GoX } from "react-icons/go";
-import { GetStaticPaths, GetStaticProps } from "next";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Card() {
+  const [favoriteData, setFavoriteData] = useState([]);
+  const [amount, setAmount] = useState(1);
+  console.log(favoriteData);
+  const router = useRouter();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/favorite/getall")
+      .then((result) => setFavoriteData(result.data));
+  }, []);
+
+  //localhost:4000/favorite/delete
+
+  let deleteAll = () => {
+    axios.delete("http://localhost:4000/favorite/delete").then(() => {
+      console.log("deleted");
+    });
+  };
+
+  let deleteOne = (idproduct: any) => {
+    axios
+      .delete(`http://localhost:4000/favorite/delete/${idproduct}`)
+      .then(() => {
+        console.log("deleted");
+        window.location.reload(false);
+      });
+  };
+
   return (
     <div>
       <Navbar />
-      <div className="prod-sell">
-        <div className="left">
-          <div className="image">
-            <img src="{product.images[0]}" alt="Product" />
-          </div>
-          <div className="info">
-            <h1>product.title</h1>
-            <p>2022/12/25</p>
-          </div>
-        </div>
-        <div className="right">
-          <div className="amount">
-            <button>
-              <HiMinusSm />
-            </button>
-            <div>amount</div>
-            <button>
-              <HiPlusSm />
-            </button>
-          </div>
-          <span>
-            <div className="total-price">product.price * amount$</div>
-            <GoX
-              className="delete-icon"
-              //   onClick={() => clearFromCart(product)}
-            />
-          </span>
+      <div>
+        <button
+          className="btn hero-btn "
+          onClick={() => {
+            deleteAll();
+            router.push("/AllProducts");
+          }}
+        >
+          Clear All
+        </button>
+
+        <div className="prod-info">
+          {favoriteData ? (
+            <div>
+              {favoriteData.map((element: any) => {
+                return (
+                  <>
+                    <>
+                      <div className="container py-3">
+                        {/* Card Start */}
+                        <div className="card">
+                          <div className="row ">
+                            <div className="col-md-7 px-3">
+                              <div className="card-block px-6">
+                                <h1 className="card-title">
+                                  {element.productName}{" "}
+                                </h1>
+                                <p className="card-text"></p>
+                                <p className="card-text">
+                                  {element.description}
+                                </p>
+                                <br />
+                                <a
+                                  className="btn hero-btn "
+                                  onClick={() => {
+                                    deleteOne(element._id);
+                                  }}
+                                >
+                                  Delete
+                                </a>
+                              </div>
+                            </div>
+                            {/* Carousel start */}
+                            <div className="col-md-5">
+                              <div
+                                id="CarouselTest"
+                                className="carousel slide"
+                                data-ride="carousel"
+                              >
+                                <div className="carousel-inner">
+                                  <div className="carousel-item active">
+                                    <img
+                                      className="d-block"
+                                      id="img"
+                                      src={element.imageUrl}
+                                      alt=""
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* End of carousel */}
+                          </div>
+                        </div>
+
+                        {/* End of card */}
+                      </div>
+                    </>
+                  </>
+                );
+              })}
+            </div>
+          ) : (
+            <div> No products</div>
+          )}{" "}
         </div>
       </div>
 

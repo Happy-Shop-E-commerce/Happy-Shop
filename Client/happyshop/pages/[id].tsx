@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
+import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -39,6 +40,36 @@ export default function ProductDetails({ singleProduct }: any) {
         setActiveImage((prev) => prev - 1);
       }
     }
+  };
+
+  const [iduser, setIduser] = useState("");
+  useEffect(() => {
+    let GetId = localStorage.getItem("USER_ID");
+    setIduser(GetId);
+  }, []);
+
+  let AddToCart = (
+    iduser: any,
+    id_product: any,
+    product_name: any,
+    product_description: any,
+    category: any,
+    price: any,
+    image: any
+  ) => {
+    axios
+      .post(`http://localhost:4000/favorite/${iduser}`, {
+        productId: id_product,
+        productName: product_name,
+        description: product_description,
+        category: category,
+        price: price,
+        imageUrl: image,
+      })
+      .then(() => {
+        console.log("added to card");
+        window.location.reload(false);
+      });
   };
 
   return (
@@ -113,7 +144,18 @@ export default function ProductDetails({ singleProduct }: any) {
             <div className="add-to-cart">
               <button
                 className="btn btn-primary"
-                // onClick={() => addToCart(activeProduct, amount)}
+                onClick={() => {
+                  AddToCart(
+                    iduser,
+                    singleProduct._id,
+                    singleProduct.productName,
+                    singleProduct.description,
+                    singleProduct.category,
+                    singleProduct.price,
+                    singleProduct.imageUrl
+                  );
+                  router.push("/Card");
+                }}
               >
                 ADD TO CARD
               </button>
