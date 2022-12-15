@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { id }: any = params;
+  const { id }: any = params; 
   const response = await fetch(`http://localhost:4000/product/${id}`);
   const singleProduct = await response.json();
   return {
@@ -80,7 +80,7 @@ export default function ProductDetails({ singleProduct }: any) {
         <div className="left">
           <img
             className="active-img"
-            src={singleProduct.imageUrl}
+            src={(singleProduct.imageUrl)}
             alt=" image 1"
           />
           <div className="slides">

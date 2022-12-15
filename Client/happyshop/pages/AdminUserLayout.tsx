@@ -1,5 +1,13 @@
-import React from "react";
+import React from 'react'
+import NavbarAdmin from './NavbarAdmin' 
 
 export default function AdminUserLayout() {
-  return <div>welcom Admin</div>;
+  return (
+    <div> 
+      <NavbarAdmin /> 
+      <span className='welcome'>welcome admin </span> 
+      
+      
+      </div>
+  )
 }
