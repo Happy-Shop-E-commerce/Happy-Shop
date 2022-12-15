@@ -3,9 +3,10 @@ const db = require("../database/index.js");
 mongoose.Promise = global.Promise;
 
 let userSchema = mongoose.Schema({
-  name: String,
-  email: String,
-  pwd: String,
+  name: { type: String },
+  email: { type: String },
+  pwd: { type: String },
+  isAdmin: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("user", userSchema);

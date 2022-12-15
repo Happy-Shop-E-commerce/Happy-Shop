@@ -1,4 +1,4 @@
-const admins = require("../admin/adminSchema");
+const users = require("../user/userSchema");
 const jwt = require("jsonwebtoken");
 
 var authMiddelware = async function (req, res, next) {
@@ -22,15 +22,15 @@ var authMiddelware = async function (req, res, next) {
     });
   }
 
-  const admin = await admins.findById(decodedToken.id);
+  const user = await users.findById(decodedToken.id);
 
-  if (!admin) {
+  if (!user) {
     return res.status(400).json({
       message: "unauthorized",
     });
   }
 
-  req.admin = admin;
+  req.user = user;
 
   next();
 };
