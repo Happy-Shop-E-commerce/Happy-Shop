@@ -90,7 +90,7 @@ export default function Navbar() {
                     onClick={() => {
                       router.push("/Card");
                     }}
-                    className="card"
+                    className="cardimg"
                     src="https://www.pngfind.com/pngs/m/453-4531594_icon-05-min-clip-art-shopping-bag-hd.png"
                   ></img>
 
@@ -102,16 +102,14 @@ export default function Navbar() {
                     </li>
                     <li>
                       <a
+                        onClick={() => {
+                          router.push("/Login");
+                        }}
                         href="#"
                         className="dropdown-toggle"
                         data-toggle="dropdown"
                       >
-                        <span
-                          className="glyphicon glyphicon-log-in"
-                          onClick={() => {
-                            router.push("/Login");
-                          }}
-                        />
+                        <span className="glyphicon glyphicon-log-in" />
                         Logout <span className="caret" />
                       </a>
                       <ul className="dropdown-menu"></ul>

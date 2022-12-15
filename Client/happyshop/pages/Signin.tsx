@@ -32,89 +32,128 @@ export default function Signin() {
     }
   }
 
-  //   async function get_all_user() {
-  //     try {
-  //       const user = await axios
-  //         .get("http://localhost:4000/users/getAll")
-  //         .then((response) => {
-  //           setalluser(response.data);
-  //         });
-  //       [];
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   get_all_user();
-
   return (
-    <div>
-      <div className="container">
-        <div className="screen">
-          <div className="screen__content">
-            <form className="login">
-              <div className="login__field">
-                <i className="login__icon fas fa-user"></i>
-                <input
-                  onChange={(event) => {
-                    setUsername(event.target.value);
-                  }}
-                  type="text"
-                  className="login__input"
-                  placeholder="User name"
-                ></input>
-              </div>
-              <div className="login__field">
-                <i className="login__icon fas fa-lock"></i>
-                <input
-                  onChange={(event) => {
-                    setEmail(event.target.value);
-                  }}
-                  type="Email"
-                  className="login__input"
-                  placeholder="Email"
-                ></input>
-                <div className="login__field">
-                  <i className="login__icon fas fa-lock"></i>
-                  <input
-                    onChange={(event) => {
-                      setpassword(event.target.value);
-                    }}
-                    type="Password"
-                    className="login__input"
-                    placeholder="Password"
-                  ></input>
-                </div>
-              </div>
-            </form>
+    // <div>
+    //   <div className="container">
+    //     <div className="screen">
+    //       <div className="screen__content">
+    //         <form className="login">
+    //           <div className="login__field">
+    //             <i className="login__icon fas fa-user"></i>
+    //             <input
+    //               onChange={(event) => {
+    //                 setUsername(event.target.value);
+    //               }}
+    //               type="text"
+    //               className="login__input"
+    //               placeholder="User name"
+    //             ></input>
+    //           </div>
+    //           <div className="login__field">
+    //             <i className="login__icon fas fa-lock"></i>
+    //             <input
+    //               onChange={(event) => {
+    //                 setEmail(event.target.value);
+    //               }}
+    //               type="Email"
+    //               className="login__input"
+    //               placeholder="Email"
+    //             ></input>
+    //             <div className="login__field">
+    //               <i className="login__icon fas fa-lock"></i>
+    //               <input
+    //                 onChange={(event) => {
+    //                   setpassword(event.target.value);
+    //                 }}
+    //                 type="Password"
+    //                 className="login__input"
+    //                 placeholder="Password"
+    //               ></input>
+    //             </div>
+    //           </div>
+    //         </form>
 
-            <button
-              onClick={() => {
-                handleSubmit();
-              }}
-              className="button login__submit"
-            >
-              <span className="button__text">Sign In </span>
-            </button>
-            <div>
-              {error ? <p style={{ color: "red" }}>{errormessage}</p> : null}
-            </div>
+    //         <button
+    //           onClick={() => {
+    //             handleSubmit();
+    //           }}
+    //           className="button login__submit"
+    //         >
+    //           <span className="button__text">Sign In </span>
+    //         </button>
+    //         <div>
+    //           {error ? <p style={{ color: "red" }}>{errormessage}</p> : null}
+    //         </div>
 
-            <div className="social-login">
-              <div className="social-icons">
-                <a href="#" className="social-login__icon fab fa-instagram"></a>
-                <a href="#" className="social-login__icon fab fa-facebook"></a>
-                <a href="#" className="social-login__icon fab fa-twitter"></a>
-              </div>
-            </div>
-          </div>
-          <div className="screen__background">
-            <span className="screen__background__shape screen__background__shape4"></span>
-            <span className="screen__background__shape screen__background__shape3"></span>
-            <span className="screen__background__shape screen__background__shape2"></span>
-            <span className="screen__background__shape screen__background__shape1"></span>
-          </div>
+    //         <div className="social-login">
+    //           <div className="social-icons">
+    //             <a href="#" className="social-login__icon fab fa-instagram"></a>
+    //             <a href="#" className="social-login__icon fab fa-facebook"></a>
+    //             <a href="#" className="social-login__icon fab fa-twitter"></a>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className="screen__background">
+    //         <span className="screen__background__shape screen__background__shape4"></span>
+    //         <span className="screen__background__shape screen__background__shape3"></span>
+    //         <span className="screen__background__shape screen__background__shape2"></span>
+    //         <span className="screen__background__shape screen__background__shape1"></span>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+
+    <div className="login">
+      <span className="loginTitle">Sign in</span>
+      <form className="loginForm">
+        <label>User name</label>
+        <input
+          onChange={(event) => {
+            setUsername(event.target.value);
+          }}
+          type="text"
+          className="loginInput"
+          placeholder="Enter your username..."
+        />
+
+        <label>Email</label>
+        <input
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+          type="text"
+          className="loginInput"
+          placeholder="Enter your username..."
+        />
+        <label>Password</label>
+        <input
+          onChange={(event) => {
+            setpassword(event.target.value);
+          }}
+          type="password"
+          className="loginInput"
+          placeholder="Enter your password..."
+        />
+        <span
+          onClick={() => {
+            handleSubmit();
+          }}
+          className="loginButton"
+        >
+          Sign in
+        </span>
+        <div>
+          {error ? <p style={{ color: "red" }}>{errormessage}</p> : null}{" "}
         </div>
-      </div>
+      </form>
+      <button
+        onClick={() => {
+          router.push("/Login");
+        }}
+        className="loginRegisterButton"
+      >
+        <span>Log In</span>
+      </button>
     </div>
   );
 }

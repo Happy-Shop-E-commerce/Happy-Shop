@@ -7,6 +7,7 @@ import "../styles/ProductDetails.css";
 import "../styles/Nav.css";
 import "../styles/cardstyle.css";
 import "../styles/aside.css";
+import "../styles/style.css";
 
 import type { AppProps } from "next/app";
 
