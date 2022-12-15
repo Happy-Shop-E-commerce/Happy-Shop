@@ -1,9 +1,10 @@
+//@ts-nocheck
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
-import axios from "axios";
+import NavbarAdmin from "./NavbarAdmin";
+import Axios from "axios";
 import Link from "next/link";
 // import Aside from "./aside";
 
@@ -31,18 +32,31 @@ export default function AllProducts({ data  }) {
   //         setData(res.data);
   //       })
   //       .catch((err) => console.log(err));
-  //   }, []);
+  //   }, []); 
+  var del =  (id : string)=>{
+     Axios.delete(`http://localhost:4000/product/${id}`)
+    .then((res)=>{
+      console.log("deleted")
+    })
+    .catch(err=>{
+      console.log(err)
+    }) 
+    
+   } 
 
-  console.log(cartProducts);
+  console.log(data);
 
   return (
     <div>
-      <Navbar />
-      {/* <Aside /> */}
+      <NavbarAdmin /> 
+      <Link href="AddProduct"  > <button>add product </button></Link>
+      {/* <Aside /> */} 
+   
       <div>
         {data.map((element: any) => {
           return (
-            <div className="row">
+            <div className="row"> 
+            
               <div className="col-md-3 col-sm-6">
                 <div className="product-grid">
                   <div className="product-image">
@@ -52,8 +66,8 @@ export default function AllProducts({ data  }) {
                     <span className="product-discount-label">-33%</span>
                     <ul className="product-links">
                       <li>
-                        <a href="#" data-tip="Add to Wishlist">
-                          <i className="fas fa-heart" />
+                        <a href="#" data-tip="delete" onClick={()=>{del(element["_id"])}} >
+                          <i className="fas fa-heart" />del
                         </a>
                       </li>
                       {/* <li>
@@ -61,11 +75,13 @@ export default function AllProducts({ data  }) {
                           <i className="fa fa-random" />
                         </a>
                       </li> */}
+                     <Link href={'/edit/id'} as = {`edit/${element._id}`}>
                       <li>
-                        <a href="#" data-tip="Quick View">
-                          <i className="fa fa-search" />
+                        <a href="#" data-tip="edit">
+                          <i className="fa fa-search" />edit
                         </a>
                       </li>
+                      </Link> 
                     </ul>
                   </div>
                   <div className="product-content">
@@ -80,7 +96,7 @@ export default function AllProducts({ data  }) {
                       <Link href={`${element._id}`}>{element.productName}</Link>
                     </h3>
                     <div className="price">{element.price} DT</div>
-                    <a
+                    {/* <a
                       onClick={() => {
                         setCartProducts(element);
                         router.push("/Card");
@@ -88,7 +104,7 @@ export default function AllProducts({ data  }) {
                       className="add-to-cart"
                     >
                       add to cart
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>

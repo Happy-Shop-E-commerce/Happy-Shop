@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import shoppingIcon from "../public/shopping-bag.png";
 
-export default function Navbar() {
+export default function NavbarAdmin() {
   const router = useRouter();
   return (
     <div>
@@ -55,7 +55,7 @@ export default function Navbar() {
                     <li>
                       <a
                         onClick={() => {
-                          router.push("/AllProducts");
+                          router.push("/AllProductAdmin");
                         }}
                       >
                         All Products{" "}
@@ -85,7 +85,9 @@ export default function Navbar() {
                         </div>
                       </form>
                     </li>
-                  </ul>
+                  </ul> 
+                 
+                    
                   <img
                     onClick={() => {
                       router.push("/Card");
@@ -99,7 +101,8 @@ export default function Navbar() {
                       <a href="#">
                         <span className="glyphicon glyphicon-user" /> Profile
                       </a>
-                    </li>
+                    </li> 
+                    
                     <li>
                       <a
                         href="#"

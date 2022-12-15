@@ -1,16 +1,17 @@
-import '../styles/globals.css'
-import '../styles/Login.css' 
-import "../styles/allProducts.css"
-// import '../styles/bootstrap.min.css'
-// import '../styles/fontawesome.css'
-// import '../styles/templatemo.css'
-// import '../styles/custom.css'
+import "../styles/globals.css";
+import "../styles/Login.css";
+import "../styles/Footer.css";
+import "../styles/Slider.css";
+import "../styles/productStyling.css";
+import "../styles/ProductDetails.css";
+import "../styles/Nav.css";
+import "../styles/cardstyle.css";
+import "../styles/aside.css"; 
+import "../styles/edit.css" 
+import "../styles/addProduct.css"
 
-
-
-
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <Component {...pageProps} />;
 }

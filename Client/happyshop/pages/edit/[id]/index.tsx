@@ -1,41 +1,40 @@
-import React,{useState} from 'react' 
-import { useRouter } from 'next/router'; 
-import axios from 'axios';
+import { useRouter } from 'next/router';
+import React,{useEffect,useState}from 'react'; 
+import axios from "axios"
 
-export default function AddProduct() { 
-    const router = useRouter(); 
-    
-    const [productName, setName] = useState('') 
-    const [description,setDescription] = useState('') 
-    const [price,setPrice] = useState("") 
-    const [category,setCategory] = useState("") 
-    const [color,setColor] = useState("")  
-    const [imageUrl,setImageUrl] = useState("")   
-    
-     
-   
-    const add=()=>{ 
-        axios.post("http://localhost:4000/product",{productName,description,category,price,imageUrl,color}) 
-        .then(res => console.log("posted") 
-        
-    )
+const Test = () => {
+  const router = useRouter(); 
+  const [data,setData] = useState([])   
+  const [productName, setName] = useState('') 
+  const [description,setDescription] = useState('') 
+  const [price,setPrice] = useState("") 
+  const [category,setCategory] = useState("") 
+  const [color,setColor] = useState("")  
+  const [imageUrl,setImageUrl] = useState("") 
+  console.log((data));
+//   console.log(id);
+ useEffect(() => {
+    if (router.isReady) {
+      // Code using query)
 
+      console.log(router.query.id) 
+      axios.get(`http://localhost:4000/product/${router.query.id}`) 
+      .then ( res => setData(res.data) ) 
+      .catch( err => console.log(err))
     }
+  }, [router.isReady]);   
+const up =()=>{
+  axios.put( `http://localhost:4000/product/${router.query.id}`,{productName,description,category,price,imageUrl,color})  
+ .then(res => { console.log(res)})
+}
+
+
 
   return (
-    // <center>
-    // <input placeholder='name' onChange={(e)=>{setName(e.target.value)}} />
-    // <input placeholder='description' onChange={(e)=>{setDescription(e.target.value)}} />
-    // <input placeholder='imageUrl' onChange={(e)=>{setImageUrl(e.target.value)}} />
-    // <input placeholder='category'onChange={(e)=>{setCategory(e.target.value)}} />
-    // <input placeholder='color' onChange={(e)=>{setColor(e.target.value)}} />
-    // <input placeholder='price' onChange={(e)=>{setPrice(e.target.value)}} /> 
-    // <button onClick={()=>{add()}}>add</button>
-    //   </center> 
- <center>
+<center>
     <div className="form">
     <div className="title">Welcome ADMIN</div>
-    <div className="subtitle">ADD PRODUCT</div>
+    <div className="subtitle"></div>
     <div className="input-container ic1">
       <input id="firstname" className="input" type="text" placeholder=" " onChange={(e)=>{setName(e.target.value)}} />
       <div className="cut" />
@@ -69,8 +68,10 @@ export default function AddProduct() {
     </div>
 
     
-    <button  className="submit" onClick={()=>add()}>submit</button>
+    <button  className="submit" onClick={()=>up()}>submit</button>
   </div> 
-  </center>
+  </center> 
   )
-}
+  
+} 
+export default Test ;
