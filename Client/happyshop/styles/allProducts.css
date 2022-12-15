@@ -5,9 +5,9 @@
     font-family: sans-serif;
     text-align: center;
   }
-  body {
+  /* body {
     background-color: rgb(196, 179, 156);
-  }
+  } */
   .content {
     display: flex;
   }
