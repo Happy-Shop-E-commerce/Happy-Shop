@@ -25,7 +25,8 @@ const Test = () => {
   }, [router.isReady]);   
 const up =()=>{
   axios.put( `http://localhost:4000/product/${router.query.id}`,{productName,description,category,price,imageUrl,color})  
- .then(res => { console.log(res)})
+ .then(res => { console.log(res) 
+  router.push("/AllProductAdmin")})
 }
 
 
@@ -68,7 +69,7 @@ const up =()=>{
     </div>
 
     
-    <button  className="submit" onClick={()=>up()}>submit</button>
+    <button  className="submit" onClick={()=>up() }>submit</button>
   </div> 
   </center> 
   )

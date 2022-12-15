@@ -9,6 +9,8 @@ import "../styles/cardstyle.css";
 import "../styles/aside.css"; 
 import "../styles/edit.css" 
 import "../styles/addProduct.css"
+import "../styles/aside.css";
+import "../styles/style.css";
 
 import type { AppProps } from "next/app";
 

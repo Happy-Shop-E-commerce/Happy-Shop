@@ -36,11 +36,13 @@ export default function AllProducts({ data  }) {
   var del =  (id : string)=>{
      Axios.delete(`http://localhost:4000/product/${id}`)
     .then((res)=>{
-      console.log("deleted")
+      console.log("deleted") 
+      window.location.reload(false);
     })
     .catch(err=>{
       console.log(err)
-    }) 
+    })  
+    
     
    } 
 
@@ -52,7 +54,7 @@ export default function AllProducts({ data  }) {
       <Link href="AddProduct"  > <button>add product </button></Link>
       {/* <Aside /> */} 
    
-      <div>
+      <div className="grid-container">
         {data.map((element: any) => {
           return (
             <div className="row"> 

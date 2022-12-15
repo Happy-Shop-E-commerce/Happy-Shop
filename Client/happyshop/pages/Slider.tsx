@@ -1,47 +1,72 @@
 import React from "react";
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
+import { useRouter } from "next/router";
 
 export default function Slider() {
+  const router = useRouter();
   return (
-    <MDBCarousel showIndicators showControls fade>
-      <MDBCarouselItem
-        class="img-with-overlay"
-        className="w-100 d-block"
-        itemId={1}
-        src="https://threadcurve.com/wp-content/uploads/2020/06/man-in-a-black-suit-june102020.jpg"
-        alt="..."
-      >
-        <h5>WE SHARE THE SAME PASSION AS YOU</h5>
-        <p>
-          We are providing you a plateform that care about healthy people with a
-          healthy mind.
-        </p>
-      </MDBCarouselItem>
+    <main>
+      {/*? slider Area Start */}
+      <div className="slider-area ">
+        <div className="slider-active">
+          {/* Single Slider */}
+          <div className="single-slider slider-height d-flex align-items-center slide-bg">
+            <div className="container">
+              <div className="row justify-content-between align-items-center">
+                <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <div className="hero__caption">
+                    <h1
+                      data-animation="fadeInLeft"
+                      data-delay=".4s"
+                      data-duration="2000ms"
+                    >
+                      Select Your New Perfect Style
+                    </h1>
+                    <p
+                      data-animation="fadeInLeft"
+                      data-delay=".7s"
+                      data-duration="2000ms"
+                    >
+                      you will find everything you need
+                    </p>
+                    {/* Hero-btn */}
 
-      <MDBCarouselItem
-        className="w-100 d-block"
-        itemId={2}
-        // src="https://images.ctfassets.net/yixw23k2v6vo/5pmsKw4R1HBSfnvtmkRUrg/bdd11cd13c0d1b31318e833710e50f28/iStock-973852008.jpg?fm=webp&q=50&w=1200&h=600&fit=thumb"
-        alt="..."
-      >
-        <h5>MEET WITH PEOPLE THAT YOU FEEL COMFORTABLE WITH</h5>
-        <p>
-          Get news, stay updated and meet new people to make sports more fun.
-        </p>
-      </MDBCarouselItem>
-
-      <MDBCarouselItem
-        className="w-100 d-block"
-        itemId={3}
-        // src="https://ideas.ted.com/wp-content/uploads/sites/3/2017/11/featured_art_goals_istock.png"
-        alt="..."
-      >
-        <h5>ACHIEVE GOALS</h5>
-        <p>
-          We always try to keep you motivated in order to stay focused on your
-          goals.
-        </p>
-      </MDBCarouselItem>
-    </MDBCarousel>
+                    {/* Hero-btn */}
+                    <div
+                      className="hero__btn"
+                      data-animation="fadeInLeft"
+                      data-delay=".8s"
+                      data-duration="2000ms"
+                    >
+                      <a
+                        onClick={() => {
+                          router.push("/AllProducts");
+                        }}
+                        className="btn hero-btn"
+                      >
+                        Shop Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-3 col-lg-3 col-md-4 col-sm-4 d-none d-sm-block">
+                  <div
+                    className="hero__img"
+                    data-animation="bounceIn"
+                    data-delay=".4s"
+                  >
+                    <img
+                      src="assets/img/hero/watch.png"
+                      alt=""
+                      className=" heartbeat"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }

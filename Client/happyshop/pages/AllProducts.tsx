@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -5,6 +7,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import axios from "axios";
 import Link from "next/link";
+import ProductDetails from "./[id]";
 // import Aside from "./aside";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -35,11 +38,43 @@ export default function AllProducts({ data  }) {
 
   console.log(cartProducts);
 
+  let AddToCart = (
+    iduser: any,
+    id_product: any,
+    product_name: any,
+    product_description: any,
+    category: any,
+    price: any,
+    image: any
+  ) => {
+    axios
+      .post(`http://localhost:4000/favorite/${iduser}`, {
+        productId: id_product,
+        productName: product_name,
+        description: product_description,
+        category: category,
+        price: price,
+        imageUrl: image,
+      })
+      .then(() => {
+        console.log("added to card");
+        window.location.reload(false);
+      });
+  };
+
+  const [id, setId] = useState("");
+  useEffect(() => {
+    let GetId = localStorage.getItem("USER_ID");
+    setId(GetId);
+  }, []);
+
+  console.log("testtt", id);
+
   return (
     <div>
       <Navbar />
       {/* <Aside /> */}
-      <div>
+      <div className="grid-container">
         {data.map((element: any) => {
           return (
             <div className="row">
@@ -51,20 +86,17 @@ export default function AllProducts({ data  }) {
                     </a>
                     <span className="product-discount-label">-33%</span>
                     <ul className="product-links">
-                      <li>
-                        <a href="#" data-tip="Add to Wishlist">
-                          <i className="fas fa-heart" />
-                        </a>
-                      </li>
                       {/* <li>
                         <a href="#" data-tip="Compare">
                           <i className="fa fa-random" />
                         </a>
                       </li> */}
                       <li>
-                        <a href="#" data-tip="Quick View">
-                          <i className="fa fa-search" />
-                        </a>
+                        <Link href={`${element._id}`}>
+                          <span data-tip="Show details">
+                            <i className="fa fa-search" />
+                          </span>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -82,7 +114,15 @@ export default function AllProducts({ data  }) {
                     <div className="price">{element.price} DT</div>
                     <a
                       onClick={() => {
-                        setCartProducts(element);
+                        AddToCart(
+                          id,
+                          element._id,
+                          element.productName,
+                          element.description,
+                          element.category,
+                          element.price,
+                          element.imageUrl
+                        );
                         router.push("/Card");
                       }}
                       className="add-to-cart"

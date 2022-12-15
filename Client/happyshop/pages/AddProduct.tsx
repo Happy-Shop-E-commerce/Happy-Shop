@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React,{useState} from 'react' 
 import { useRouter } from 'next/router'; 
 import axios from 'axios';
@@ -16,7 +17,9 @@ export default function AddProduct() {
    
     const add=()=>{ 
         axios.post("http://localhost:4000/product",{productName,description,category,price,imageUrl,color}) 
-        .then(res => console.log("posted") 
+        .then(res => {console.log("posted") 
+        router.push("/AllProductAdmin") 
+    }
         
     )
 

@@ -92,7 +92,7 @@ export default function NavbarAdmin() {
                     onClick={() => {
                       router.push("/Card");
                     }}
-                    className="card"
+                    className="cardimg"
                     src="https://www.pngfind.com/pngs/m/453-4531594_icon-05-min-clip-art-shopping-bag-hd.png"
                   ></img>
 
