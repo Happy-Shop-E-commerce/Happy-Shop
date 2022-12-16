@@ -1,10 +1,16 @@
 import React from "react";
 import { useRouter } from "next/router";
-import shoppingIcon from "../public/shopping-bag.png"; 
+import Logo from "../public/Happy Shop Log-2.png"; 
 import Link from "next/link";
 
 export default function Navbar() {
   const router = useRouter();
+
+  const handelLogOut = () => {
+    localStorage.removeItem("payload.name");
+    router.push("/Login");
+  };
+
   return (
     <div>
       <>
@@ -17,16 +23,17 @@ export default function Navbar() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="navbar-header">
-                  <button
-                    className="navbar-toggle"
-                    data-target="#mobile_menu"
-                    data-toggle="collapse"
-                  >
-                    <span className="icon-bar" />
-                    <span className="icon-bar" />
-                    <span className="icon-bar" />
-                  </button>
                   <a href="#" className="navbar-brand">
+                    .......
+                  </a>
+
+                  <a
+                    onClick={() => {
+                      router.push("/Home");
+                    }}
+                    href="#"
+                    className="navbar-brand"
+                  >
                     Happy Shop
                   </a>
                 </div>
@@ -62,27 +69,33 @@ export default function Navbar() {
                     <li>
                     <Link href = "/T-SHIRT">
                         
-                       T-SHIRT{" "}
+                       T-Shirt{" "}
                     
                     </Link>
                     </li>  
                     <li>
                     <Link href = "/shoes">
                         
-                        SHOES{" "}
+                        Shoes{" "}
                      
                      </Link>
                     </li> 
                     <li>
                     <Link href = "/jeans">
                         
-                        JEANS{" "}  
+                        Jeans{" "}  
                      
                      </Link>
                     </li>
 
                     <li>
-                      <a href="#">Contact Us</a>
+                      <a
+                        onClick={() => {
+                          router.push("/Team");
+                        }}
+                      >
+                        About Us
+                      </a>
                     </li>
                   </ul>
                   <ul className="nav navbar-nav">
@@ -102,6 +115,10 @@ export default function Navbar() {
                             </span>
                           </div>
                         </div>
+                        <img
+                          className="logo"
+                          src="https://assets.coingecko.com/coins/images/12561/small/GMC-favicon-Asset-200x200.png"
+                        ></img>
                       </form>
                     </li>
                   </ul>
@@ -122,7 +139,7 @@ export default function Navbar() {
                     <li>
                       <a
                         onClick={() => {
-                          router.push("/Login");
+                          handelLogOut();
                         }}
                         href="#"
                         className="dropdown-toggle"

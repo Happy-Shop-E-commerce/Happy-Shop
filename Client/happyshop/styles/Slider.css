@@ -11,3 +11,10 @@
   text-align: center;
 
 }
+
+.slide_image{
+  position: relative;
+  width : 60%;
+  left: 900px;
+  top:100px
+}

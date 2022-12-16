@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import Link from "next/link";
 import ProductDetails from "./[id]";
+import NavbarAdmin from "./NavbarAdmin";
 // import Aside from "./aside";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -61,7 +62,7 @@ export default function AllProducts({ data  }) {
 
   return (
     <div>
-      <Navbar />
+      <NavbarAdmin />
       {/* <Aside /> */}
       <div className="grid-container">
         {filter.map((element: any) => {

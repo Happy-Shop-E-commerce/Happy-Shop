@@ -1,7 +1,8 @@
 //@ts-nocheck
 import React from "react";
 import { useRouter } from "next/router";
-import shoppingIcon from "../public/shopping-bag.png";
+import shoppingIcon from "../public/shopping-bag.png"; 
+import Link from "next/link";
 
 export default function NavbarAdmin({data}) {
   const router = useRouter(); 
@@ -19,6 +20,9 @@ export default function NavbarAdmin({data}) {
             <div className="row">
               <div className="col-lg-12">
                 <div className="navbar-header">
+                  <a href="#" className="navbar-brand">
+                    .......
+                  </a>
                   <button
                     className="navbar-toggle"
                     data-target="#mobile_menu"
@@ -28,7 +32,13 @@ export default function NavbarAdmin({data}) {
                     <span className="icon-bar" />
                     <span className="icon-bar" />
                   </button>
-                  <a href="#" className="navbar-brand">
+                  <a
+                    onClick={() => {
+                      router.push("/HomeAdmin");
+                    }}
+                    href="#"
+                    className="navbar-brand"
+                  >
                     Happy Shop
                   </a>
                 </div>
@@ -37,24 +47,15 @@ export default function NavbarAdmin({data}) {
                     <li className="active">
                       <a
                         onClick={() => {
-                          router.push("/Home");
+                          router.push("/HomeAdmin");
                         }}
                       >
                         Home
                       </a>
                     </li>
 
-                    {/* <select class=" genre">
-                      <option> --- </option>
-                      <option id="men"> Men </option>
-                      <option id="Women"> Women </option>
-                    </select> */}
+                  
 
-                    <li>
-                      <a className="dropdown-toggle" data-toggle="dropdown">
-                        Category <span className="caret" />
-                      </a>
-                    </li>
                     <li>
                       <a
                         onClick={() => {
@@ -63,10 +64,38 @@ export default function NavbarAdmin({data}) {
                       >
                         All Products{" "}
                       </a>
+                    </li>  
+
+                    <li>
+                    <Link href = "/T-SHIRTadmin">
+                        
+                       T-Shirt{" "}
+                    
+                    </Link>
+                    </li>  
+                    <li>
+                    <Link href = "/shoesadmin">
+                        
+                        Shoes{" "}
+                     
+                     </Link>
+                    </li> 
+                    <li>
+                    <Link href = "/jeansadmin">
+                        
+                        Jeans{" "}  
+                     
+                     </Link>
                     </li>
 
                     <li>
-                      <a href="#">Contact Us</a>
+                      <a
+                        onClick={() => {
+                          router.push("/Team");
+                        }}
+                      >
+                        About Us
+                      </a>
                     </li>
                   </ul>
                   <ul className="nav navbar-nav">
@@ -86,15 +115,24 @@ export default function NavbarAdmin({data}) {
                             </span>
                           </div>
                         </div>
+                        <img
+                          className="logo_admin"
+                          src="https://assets.coingecko.com/coins/images/12561/small/GMC-favicon-Asset-200x200.png"
+                        ></img>
+                        <button
+                          className="admin-"
+                          onClick={() => {
+                            alert("Admin");
+                          }}
+                        >
+                          {" "}
+                          Admin
+                        </button>
                       </form>
                     </li>
-                  </ul> 
-                 
-                    
+                  </ul>
+
                   <img
-                    onClick={() => {
-                      router.push("/Card");
-                    }}
                     className="cardimg"
                     src="https://www.pngfind.com/pngs/m/453-4531594_icon-05-min-clip-art-shopping-bag-hd.png"
                   ></img>
@@ -104,20 +142,18 @@ export default function NavbarAdmin({data}) {
                       <a href="#">
                         <span className="glyphicon glyphicon-user" /> Profile
                       </a>
-                    </li> 
-                    
+                    </li>
+
                     <li>
                       <a
+                        onClick={() => {
+                          router.push("/Login");
+                        }}
                         href="#"
                         className="dropdown-toggle"
                         data-toggle="dropdown"
                       >
-                        <span
-                          className="glyphicon glyphicon-log-in"
-                          onClick={() => {
-                            router.push("/Login");
-                          }}
-                        />
+                        <span className="glyphicon glyphicon-log-in" />
                         Logout <span className="caret" />
                       </a>
                       <ul className="dropdown-menu"></ul>

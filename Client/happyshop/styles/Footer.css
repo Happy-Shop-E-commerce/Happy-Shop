@@ -1,8 +1,10 @@
 .footer-dark {
-    padding: 10px 0;
+    padding: 35px 0;
     color: #f0f9ff;
     background-color: #282d32;
-    height: 600px;
+    height: 210px;
+    position: relative;
+   
 
 }
 

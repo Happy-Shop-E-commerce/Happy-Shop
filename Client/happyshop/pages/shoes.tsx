@@ -85,13 +85,7 @@ export default function AllProducts({ data  }) {
                     </ul>
                   </div>
                   <div className="product-content">
-                    <ul className="rating">
-                      <li className="fas fa-star" />
-                      <li className="fas fa-star" />
-                      <li className="fas fa-star" />
-                      <li className="far fa-star" />
-                      <li className="far fa-star" />
-                    </ul>
+               
                     <h3 className="title">
                       <Link href={`${element._id}`}>{element.productName}</Link>
                     </h3>

@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import Link from "next/link";
 import ProductDetails from "./[id]";
+import NavbarAdmin from "./NavbarAdmin";
 // import Aside from "./aside";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -24,7 +25,7 @@ export default function AllProducts({ data  }) {
 
   const [cartProducts, setCartProducts] = useState([]);
   const [cartTotal, setCartTotal] = useState(0); 
-  const filter = data.filter((e)=> e.category === "jeans") 
+  const filter = data.filter((e)=> e.category === "T-SHIRT") 
 
 
   let AddToCart = (
@@ -61,7 +62,7 @@ export default function AllProducts({ data  }) {
 
   return (
     <div>
-      <Navbar />
+      <NavbarAdmin />
       {/* <Aside /> */}
       <div className="grid-container">
         {filter.map((element: any) => {
@@ -85,7 +86,7 @@ export default function AllProducts({ data  }) {
                     </ul>
                   </div>
                   <div className="product-content">
-                 
+             
                     <h3 className="title">
                       <Link href={`${element._id}`}>{element.productName}</Link>
                     </h3>
