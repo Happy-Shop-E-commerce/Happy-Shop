@@ -110,6 +110,7 @@ export default function ProductDetails({ singleProduct }: any) {
             </div>
             <h1>{singleProduct.productName}</h1>
             <p className="disc">{singleProduct.description}</p>
+            <p className="disc">Color : {singleProduct.color}</p>
             <h2>{singleProduct.price} dt</h2>
           </div>
           <div className="middle">

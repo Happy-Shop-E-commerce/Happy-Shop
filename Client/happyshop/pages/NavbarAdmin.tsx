@@ -1,13 +1,12 @@
 //@ts-nocheck
 import React from "react";
 import { useRouter } from "next/router";
-import shoppingIcon from "../public/shopping-bag.png"; 
+import shoppingIcon from "../public/shopping-bag.png";
 import Link from "next/link";
 
 export default function NavbarAdmin() {
-  const router = useRouter(); 
-  console.log(data);
-  
+  const router = useRouter();
+
   return (
     <div>
       <>
@@ -54,8 +53,6 @@ export default function NavbarAdmin() {
                       </a>
                     </li>
 
-                  
-
                     <li>
                       <a
                         onClick={() => {
@@ -64,28 +61,16 @@ export default function NavbarAdmin() {
                       >
                         All Products{" "}
                       </a>
-                    </li>  
+                    </li>
 
                     <li>
-                    <Link href = "/T-SHIRTadmin">
-                        
-                       T-Shirt{" "}
-                    
-                    </Link>
-                    </li>  
+                      <Link href="/T-SHIRTadmin">T-Shirt </Link>
+                    </li>
                     <li>
-                    <Link href = "/shoesadmin">
-                        
-                        Shoes{" "}
-                     
-                     </Link>
-                    </li> 
+                      <Link href="/shoesadmin">Shoes </Link>
+                    </li>
                     <li>
-                    <Link href = "/jeansadmin">
-                        
-                        Jeans{" "}  
-                     
-                     </Link>
+                      <Link href="/jeansadmin">Jeans </Link>
                     </li>
 
                     <li>
