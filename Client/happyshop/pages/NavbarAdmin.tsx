@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import shoppingIcon from "../public/shopping-bag.png"; 
 import Link from "next/link";
 
-export default function NavbarAdmin({data}) {
+export default function NavbarAdmin() {
   const router = useRouter(); 
   console.log(data);
   
