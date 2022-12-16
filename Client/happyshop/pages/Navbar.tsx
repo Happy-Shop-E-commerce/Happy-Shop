@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import shoppingIcon from "../public/shopping-bag.png";
+import shoppingIcon from "../public/shopping-bag.png"; 
+import Link from "next/link";
 
 export default function Navbar() {
   const router = useRouter();
@@ -47,11 +48,8 @@ export default function Navbar() {
                       <option id="Women"> Women </option>
                     </select> */}
 
-                    <li>
-                      <a className="dropdown-toggle" data-toggle="dropdown">
-                        Category <span className="caret" />
-                      </a>
-                    </li>
+                   
+                    
                     <li>
                       <a
                         onClick={() => {
@@ -60,6 +58,27 @@ export default function Navbar() {
                       >
                         All Products{" "}
                       </a>
+                    </li> 
+                    <li>
+                    <Link href = "/T-SHIRT">
+                        
+                       T-SHIRT{" "}
+                    
+                    </Link>
+                    </li>  
+                    <li>
+                    <Link href = "/shoes">
+                        
+                        SHOES{" "}
+                     
+                     </Link>
+                    </li> 
+                    <li>
+                    <Link href = "/jeans">
+                        
+                        JEANS{" "}  
+                     
+                     </Link>
                     </li>
 
                     <li>

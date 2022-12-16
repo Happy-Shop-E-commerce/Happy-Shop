@@ -1,9 +1,12 @@
+//@ts-nocheck
 import React from "react";
 import { useRouter } from "next/router";
 import shoppingIcon from "../public/shopping-bag.png";
 
-export default function NavbarAdmin() {
-  const router = useRouter();
+export default function NavbarAdmin({data}) {
+  const router = useRouter(); 
+  console.log(data);
+  
   return (
     <div>
       <>
