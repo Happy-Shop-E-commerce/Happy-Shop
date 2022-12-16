@@ -14,29 +14,6 @@ export default function Login() {
 
   const router = useRouter();
 
-  //   async function handleSubmit() {
-  //     try {
-  //     //   event.preventDefault();
-  //       const admin = await axios.post("http://localhost:4000/users/login", {
-  //         email: email,
-  //         password : password
-  //       })
-  //       if (admin) {
-  //         // console.log(admin.data.id);
-  //         localStorage.setItem("token", admin.data.token);
-  //         localStorage.setItem("id", admin.data.id);
-  //         console.log(admin)
-  // console.log("id", admin.data.id );
-  // console.log("token", admin.data.token);
-  //         router.push("/Home")
-  //         console.log("test");
-
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-
   async function handleSubmit() {
     try {
       //   event.preventDefault();
@@ -89,6 +66,11 @@ export default function Login() {
 
   return (
     <div className="login">
+      <img
+        className=" login_image"
+        src="https://sikepo.acehtamiangkab.go.id/images/pages/login.png"
+      ></img>
+
       <span className="loginTitle">Login</span>
       <form className="loginForm">
         <label>Username</label>

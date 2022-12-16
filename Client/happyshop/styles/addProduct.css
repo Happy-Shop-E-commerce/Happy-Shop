@@ -1,5 +1,5 @@
 .form {
-    background-color: #15172b;
+    background-color: #e6e6e6;
     border-radius: 20px;
     box-sizing: border-box;
     height: 800px;
@@ -8,7 +8,7 @@
   }
   
   .title {
-    color: #eee;
+    color: rgb(5, 5, 5);
     font-family: sans-serif;
     font-size: 36px;
     font-weight: 600;
@@ -16,7 +16,7 @@
   }
   
   .subtitle {
-    color: #eee;
+    color: rgb(64, 64, 64);
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -38,11 +38,11 @@
   }
   
   .input {
-    background-color: #303245;
+    background-color: #dad9d9;
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
-    color: #eee;
+    color: rgb(3, 3, 3);
     font-size: 18px;
     height: 100%;
     outline: 0;
@@ -51,7 +51,7 @@
   }
   
   .cut {
-    background-color: #15172b;
+    background-color: #cecdcd;
     border-radius: 10px;
     height: 20px;
     left: 20px;
@@ -89,15 +89,15 @@
   }
   
   .input:not(:placeholder-shown) ~ .placeholder {
-    color: #808097;
+    color: #000000;
   }
   
   .input:focus ~ .placeholder {
-    color: #dc2f55;
+    color: #7E3095;
   }
   
   .submit {
-    background-color: #08d;
+    background-color: #7E3095;
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
@@ -112,6 +112,25 @@
   }
   
   .submit:active {
-    background-color: #06b;
+    background-color: #886a91;
   }
   
+
+    .button_add {
+      width: 10%;
+      position: relative;
+      left: 10px;
+      font-weight: bold;
+      font-size: 15px;
+      padding-top: 15px;
+      margin-top: 1px;
+      padding-bottom: 9px;
+  top:-8px;
+      border: none;
+      background: #5e2ced;
+      color: white;
+  
+      transition: 0.4s;
+      border-radius: 10px;
+      cursor: pointer;
+    }

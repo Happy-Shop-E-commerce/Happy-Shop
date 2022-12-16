@@ -7,6 +7,7 @@ export default function Slider() {
   return (
     <main>
       {/*? slider Area Start */}
+
       <div className="slider-area ">
         <div className="slider-active">
           {/* Single Slider */}
@@ -14,6 +15,10 @@ export default function Slider() {
             <div className="container">
               <div className="row justify-content-between align-items-center">
                 <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                  <img
+                    className=" slide_image"
+                    src="https://o.remove.bg/downloads/b74a7c52-6669-435d-a075-41f31e3142b4/176124-5767917-removebg-preview.png"
+                  ></img>
                   <div className="hero__caption">
                     <h1
                       data-animation="fadeInLeft"
@@ -22,6 +27,7 @@ export default function Slider() {
                     >
                       Select Your New Perfect Style
                     </h1>
+
                     <p
                       data-animation="fadeInLeft"
                       data-delay=".7s"
