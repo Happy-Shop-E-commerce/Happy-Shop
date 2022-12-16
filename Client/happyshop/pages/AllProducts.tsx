@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Link from "next/link";
 import ProductDetails from "./[id]";
+import axios from "axios";
 // import Aside from "./aside";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -19,7 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function AllProducts({ data  }) {
+export default function AllProducts({ data }) {
   const router = useRouter();
 
   const [cartProducts, setCartProducts] = useState([]);
@@ -93,13 +94,6 @@ export default function AllProducts({ data  }) {
                     </ul>
                   </div>
                   <div className="product-content">
-                    <ul className="rating">
-                      <li className="fas fa-star" />
-                      <li className="fas fa-star" />
-                      <li className="fas fa-star" />
-                      <li className="far fa-star" />
-                      <li className="far fa-star" />
-                    </ul>
                     <h3 className="title">
                       <Link href={`${element._id}`}>{element.productName}</Link>
                     </h3>

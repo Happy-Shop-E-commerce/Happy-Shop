@@ -40,7 +40,7 @@ export default function Card() {
       <Navbar />
       <div>
         <button
-          className="btn hero-btn "
+          className="btn hero-btn"
           onClick={() => {
             deleteAll();
             router.push("/AllProducts");
@@ -65,11 +65,51 @@ export default function Card() {
                                 <h1 className="card-title">
                                   {element.productName}{" "}
                                 </h1>
+                                <div className="category">
+                                  Category : <span> {element.category}</span>
+                                </div>
+
                                 <p className="card-text"></p>
                                 <p className="card-text">
                                   {element.description}
                                 </p>
                                 <br />
+                                <h2> Price:{element.price} dt</h2>
+
+                                <h3>Quantity :</h3>
+                                <div className="btn-group">
+                                  <button
+                                    className="btn"
+                                    id="plusBtn"
+                                    onClick={() =>
+                                      setAmount((prev) => prev + 1)
+                                    }
+                                  >
+                                    +
+                                  </button>
+                                  <span className="btn" id="amount">
+                                    {amount}
+                                  </span>
+                                  <button
+                                    className="btn"
+                                    id="minusBtn"
+                                    onClick={() => {
+                                      amount > 1 &&
+                                        setAmount((prev) => prev - 1);
+                                    }}
+                                  >
+                                    -
+                                  </button>
+                                </div>
+                                <h1>
+                                  Total :
+                                  <span>{element.price * amount} dt </span>
+                                </h1>
+                              </div>
+
+                              <button className="button-buy"> Buy</button>
+
+                              <div>
                                 <a
                                   className="btn hero-btn "
                                   onClick={() => {
@@ -80,6 +120,7 @@ export default function Card() {
                                 </a>
                               </div>
                             </div>
+
                             {/* Carousel start */}
                             <div className="col-md-5">
                               <div

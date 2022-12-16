@@ -81,3 +81,23 @@ body {
   float: left;
   left: 100px;
 }
+
+
+.button-buy {
+  width: 50%;
+
+  position: relative;
+  left: 190px;
+  font-weight: bold;
+  font-size: 17px;
+  padding-top: 15px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  border: none;
+  background: #5e2ced;
+  color: white;
+
+  transition: 0.4s;
+  border-radius: 10px;
+  cursor: pointer;
+}

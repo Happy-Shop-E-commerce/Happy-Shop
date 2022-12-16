@@ -1,9 +1,15 @@
 import React from "react";
 import { useRouter } from "next/router";
-import shoppingIcon from "../public/shopping-bag.png";
+import Logo from "../public/Happy Shop Log-2.png";
 
 export default function Navbar() {
   const router = useRouter();
+
+  const handelLogOut = () => {
+    localStorage.removeItem("payload.name");
+    router.push("/Login");
+  };
+
   return (
     <div>
       <>
@@ -16,16 +22,17 @@ export default function Navbar() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="navbar-header">
-                  <button
-                    className="navbar-toggle"
-                    data-target="#mobile_menu"
-                    data-toggle="collapse"
-                  >
-                    <span className="icon-bar" />
-                    <span className="icon-bar" />
-                    <span className="icon-bar" />
-                  </button>
                   <a href="#" className="navbar-brand">
+                    .......
+                  </a>
+
+                  <a
+                    onClick={() => {
+                      router.push("/Home");
+                    }}
+                    href="#"
+                    className="navbar-brand"
+                  >
                     Happy Shop
                   </a>
                 </div>
@@ -41,17 +48,23 @@ export default function Navbar() {
                       </a>
                     </li>
 
-                    {/* <select class=" genre">
-                      <option> --- </option>
-                      <option id="men"> Men </option>
-                      <option id="Women"> Women </option>
-                    </select> */}
-
-                    <li>
+                    {/* <li>
                       <a className="dropdown-toggle" data-toggle="dropdown">
                         Category <span className="caret" />
                       </a>
+                    </li> */}
+
+                    <li>
+                      <a>T-shirt </a>
                     </li>
+
+                    <li>
+                      <a>Jeans </a>
+                    </li>
+                    <li>
+                      <a>Shose </a>
+                    </li>
+
                     <li>
                       <a
                         onClick={() => {
@@ -63,7 +76,13 @@ export default function Navbar() {
                     </li>
 
                     <li>
-                      <a href="#">Contact Us</a>
+                      <a
+                        onClick={() => {
+                          router.push("/Team");
+                        }}
+                      >
+                        About Us
+                      </a>
                     </li>
                   </ul>
                   <ul className="nav navbar-nav">
@@ -83,6 +102,10 @@ export default function Navbar() {
                             </span>
                           </div>
                         </div>
+                        <img
+                          className="logo"
+                          src="https://assets.coingecko.com/coins/images/12561/small/GMC-favicon-Asset-200x200.png"
+                        ></img>
                       </form>
                     </li>
                   </ul>
@@ -103,7 +126,7 @@ export default function Navbar() {
                     <li>
                       <a
                         onClick={() => {
-                          router.push("/Login");
+                          handelLogOut();
                         }}
                         href="#"
                         className="dropdown-toggle"
