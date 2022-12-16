@@ -27,7 +27,7 @@ export default function AllProducts({ data  }) {
   //   const [data, setData] = useState([])
   //   useEffect(() => {
   //     axios
-  //       .get("http://localhost:4000/product")
+  //       .get("http://localhost:4000/product")k
   //       .then((res) => {
   //         setData(res.data);
   //       })
