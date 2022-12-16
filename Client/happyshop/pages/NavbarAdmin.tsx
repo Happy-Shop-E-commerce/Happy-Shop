@@ -1,9 +1,13 @@
+//@ts-nocheck
 import React from "react";
 import { useRouter } from "next/router";
-import shoppingIcon from "../public/shopping-bag.png";
+import shoppingIcon from "../public/shopping-bag.png"; 
+import Link from "next/link";
 
 export default function NavbarAdmin() {
-  const router = useRouter();
+  const router = useRouter(); 
+  console.log(data);
+  
   return (
     <div>
       <>
@@ -50,16 +54,7 @@ export default function NavbarAdmin() {
                       </a>
                     </li>
 
-                    <li>
-                      <a>T-shirt </a>
-                    </li>
-
-                    <li>
-                      <a>Jeans </a>
-                    </li>
-                    <li>
-                      <a>Shose </a>
-                    </li>
+                  
 
                     <li>
                       <a
@@ -69,6 +64,28 @@ export default function NavbarAdmin() {
                       >
                         All Products{" "}
                       </a>
+                    </li>  
+
+                    <li>
+                    <Link href = "/T-SHIRTadmin">
+                        
+                       T-Shirt{" "}
+                    
+                    </Link>
+                    </li>  
+                    <li>
+                    <Link href = "/shoesadmin">
+                        
+                        Shoes{" "}
+                     
+                     </Link>
+                    </li> 
+                    <li>
+                    <Link href = "/jeansadmin">
+                        
+                        Jeans{" "}  
+                     
+                     </Link>
                     </li>
 
                     <li>

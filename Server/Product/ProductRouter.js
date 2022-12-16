@@ -7,10 +7,12 @@ const {
   getOne,
   deleteOne,
   createOne,
-  updateOne,
+  updateOne, 
+  findOne
 } = require("./ProductController");
 
-router.get("/", getAll);
+router.get("/", getAll); 
+router.get("/find",findOne)
 router.get("/:id", getOne);
 
 router.delete("/:id", deleteOne);

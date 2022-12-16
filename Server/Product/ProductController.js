@@ -51,7 +51,21 @@ const updateOne = async (req, res) => {
     console.log(err);
   }
 };
-// delete a product
+// delete a product   
+
+const findOne = async(req,res)=>{ 
+try {  
+  const find = await product.findOne(  
+    {  category : req.body.category   }
+  ) 
+  res.send(find) ;
+} catch (err){ 
+  console.log(err);
+}
+}
+
+
+ 
 
 const deleteOne = async (req, res) => {
   const id = req.params.id;
@@ -76,4 +90,4 @@ const getOne = async (req, res) => {
   }
 };
 
-module.exports = { deleteOne, updateOne, createOne, getAll, getOne };
+module.exports = { deleteOne, updateOne, createOne, getAll, getOne,findOne };

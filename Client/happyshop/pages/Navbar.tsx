@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Logo from "../public/Happy Shop Log-2.png";
+import Logo from "../public/Happy Shop Log-2.png"; 
+import Link from "next/link";
 
 export default function Navbar() {
   const router = useRouter();
@@ -48,23 +49,14 @@ export default function Navbar() {
                       </a>
                     </li>
 
-                    {/* <li>
-                      <a className="dropdown-toggle" data-toggle="dropdown">
-                        Category <span className="caret" />
-                      </a>
-                    </li> */}
+                    {/* <select class=" genre">
+                      <option> --- </option>
+                      <option id="men"> Men </option>
+                      <option id="Women"> Women </option>
+                    </select> */}
 
-                    <li>
-                      <a>T-shirt </a>
-                    </li>
-
-                    <li>
-                      <a>Jeans </a>
-                    </li>
-                    <li>
-                      <a>Shose </a>
-                    </li>
-
+                   
+                    
                     <li>
                       <a
                         onClick={() => {
@@ -73,6 +65,27 @@ export default function Navbar() {
                       >
                         All Products{" "}
                       </a>
+                    </li> 
+                    <li>
+                    <Link href = "/T-SHIRT">
+                        
+                       T-Shirt{" "}
+                    
+                    </Link>
+                    </li>  
+                    <li>
+                    <Link href = "/shoes">
+                        
+                        Shoes{" "}
+                     
+                     </Link>
+                    </li> 
+                    <li>
+                    <Link href = "/jeans">
+                        
+                        Jeans{" "}  
+                     
+                     </Link>
                     </li>
 
                     <li>
