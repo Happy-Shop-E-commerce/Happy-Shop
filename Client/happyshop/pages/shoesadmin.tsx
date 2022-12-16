@@ -20,13 +20,12 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function AllProducts({ data  }) {
+export default function AllProducts({ data }) {
   const router = useRouter();
 
   const [cartProducts, setCartProducts] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0); 
-  const filter = data.filter((e)=> e.category === "shoes") 
-
+  const [cartTotal, setCartTotal] = useState(0);
+  const filter = data.filter((e) => e.category === "shoes");
 
   let AddToCart = (
     iduser: any,
@@ -48,7 +47,7 @@ export default function AllProducts({ data  }) {
       })
       .then(() => {
         console.log("added to card");
-        window.location.reload(false); 
+        window.location.reload(false);
       });
   };
 
@@ -86,7 +85,6 @@ export default function AllProducts({ data  }) {
                     </ul>
                   </div>
                   <div className="product-content">
-               
                     <h3 className="title">
                       <Link href={`${element._id}`}>{element.productName}</Link>
                     </h3>
@@ -115,7 +113,6 @@ export default function AllProducts({ data  }) {
           );
         })}
       </div>
-      
     </div>
   );
 }
