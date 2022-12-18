@@ -1,4 +1,4 @@
-const User = require("../user/userSchema");
+const User= require("../user/userSchema");
 const Product =require('../Product/ProductSchema');
 const favorite =require('./favoriteSchema')
 
@@ -7,10 +7,10 @@ const favorite =require('./favoriteSchema')
 const getAllFavorite= async(req,res)=>{
 
     console.log(req.body);
-    const user= await User.findOne({id:req.params.user_id})
+    const user= await User.findOne({id:req.params._id})
       const userSaved= await user.save()
     console.log(userSaved);
-    if(user){
+    if(userSaved){
         let product= await new favorite({userId:userSaved,
             productId:req.body._id,
         productName:req.body.productName,
